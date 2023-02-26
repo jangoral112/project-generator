@@ -1,0 +1,9 @@
+FROM openjdk:19-jdk-alpine
+
+WORKDIR /home/app
+
+COPY . .
+
+RUN apk add curl
+
+CMD ./gradlew bootRun
