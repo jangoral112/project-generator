@@ -1,0 +1,30 @@
+set dotenv-load
+
+# Build app by running bootJar dependencies
+build:
+  ./gradlew resolveMainClassName
+
+# Run app
+run: build
+  ./gradlew bootRun
+
+# Build docker image
+docker-build: build
+  docker compose build
+
+# Run app in docker
+docker-up: docker-build
+  docker compose up
+
+# Stop and remove docker
+docker-down:
+  docker compose down
+
+# Run sh shell in docker
+docker-shell:
+  docker exec -it $PROJECT_NAME-app sh 
+
+# Clean up build, docker container and image
+clean: docker-down
+  ./gradlew clean
+  docker image rm -f $PROJECT_NAME-app
