@@ -12,7 +12,7 @@ def run():
 
     config = get_config()
 
-    create_spring_project(config)
+    create_spring_project(config["main_projects_directory"], config["project_name"])
 
     create_files_from_templates(config)
 
@@ -20,15 +20,22 @@ def run():
 
     logging.info("Done")
 
+# Utils
+
+def kebab_case_to_camel_case(kebab_case_string):
+    string_patrs = kebab_case_string.split("-")
+    return "".join(string_part.title() for string_part in string_patrs)
+
 # General configuration
 
 def get_config():
-    config = { 
+    config = {
+        "main_projects_directory": "/home/jgoral/Documents/projects",
         "project_name": "sample-project", 
         "server_port": 8989 
     }
     
-    config["target_directory"] = get_target_dir(config["project_name"])
+    config["target_directory"] = config["main_projects_directory"] + "/" + config["project_name"]
 
     return config
 
@@ -37,10 +44,10 @@ def get_target_dir(project_name):
 
 # Run spring cli to create project
 
-def create_spring_project(config):
+def create_spring_project(main_projects_directory, project_name):
     logging.info("Creating Spring boot project...")
 
-    subprocess.run([f"resources/scripts/spring_cli_init.sh", config["target_directory"]])
+    subprocess.run(["resources/scripts/spring_cli_init.sh", main_projects_directory, project_name])
 
 # Creating files from templates
 
