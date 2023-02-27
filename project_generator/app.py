@@ -63,3 +63,6 @@ def clean_up_unwanted_files(config):
 
     logging.info("Removing HELP.md file")
     remove(config["target_directory"] + "/" + "HELP.md")
+    
+    logging.info("Removing gradlew.bat file")
+    remove(config["target_directory"] + "/" + "gradlew.bat")
