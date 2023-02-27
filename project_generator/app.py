@@ -20,12 +20,6 @@ def run():
 
     logging.info("Done")
 
-# Utils
-
-def kebab_case_to_camel_case(kebab_case_string):
-    string_patrs = kebab_case_string.split("-")
-    return "".join(string_part.title() for string_part in string_patrs)
-
 # General configuration
 
 def get_config():
