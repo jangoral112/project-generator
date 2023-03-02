@@ -2,14 +2,14 @@ version: "3.9"
 
 services:
   app:
-      container_name: "${PROJECT_NAME}-app"
-      build: .
-      env_file: .env
-      ports:
-        - ${SERVER_PORT}:${SERVER_PORT}
-      healthcheck:
-        test: curl --request GET 'http://127.0.0.1:${SERVER_PORT}/actuator/health'
-        interval: 2s
-        timeout: 2s
-        retries: 4
-        start_period: 10s
+    container_name: "${PROJECT_NAME}-app"
+    build: .
+    env_file: .env
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    healthcheck:
+      test: curl --request GET 'http://127.0.0.1:${SERVER_PORT}/actuator/health'
+      interval: 2s
+      timeout: 2s
+      retries: 4
+      start_period: 10s
