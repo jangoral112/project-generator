@@ -1,6 +1,5 @@
-import project_generator.template as template
+from templating import create_file_from_template
 
-from jinja2 import Environment, FileSystemLoader
 from os import getcwd, path, remove
 import subprocess
 import logging
@@ -54,7 +53,7 @@ def create_files_from_templates(config):
     ]
 
     for filename in filenames:
-        template.create_file_from_template(config, filename)
+        create_file_from_template(config, filename)
 
 # Clean up
 
