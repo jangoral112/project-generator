@@ -1,0 +1,16 @@
+templates:
+  - filename: ".justfile"
+    template_name: ".justfile.j2"
+    target_location: "./"
+
+  - filename: ".dist.env" 
+    template_name: ".dist.env.j2"
+    target_location: "./"
+
+  - filename: "docker-compose.yml" 
+    template_name: "docker-compose.yml.j2"
+    target_location: "./"
+
+  - filename: "Dockerfile" 
+    template_name: "Dockerfile.j2"
+    target_location: "./docker/app"
