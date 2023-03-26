@@ -14,17 +14,20 @@ docker-build: build
 
 # Run app in docker
 docker-up: docker-build
-  docker compose up
+  docker compose up -d
 
-# Stop and remove docker
+# Stop and remove docker containers
 docker-down:
   docker compose down
+
+# Stop and remove docker containers, names volumes and images
+docker-clean:
+  docker compose down --volumes --rmi all
 
 # Run sh shell in docker
 docker-shell:
   docker exec -it $PROJECT_NAME-app sh 
 
 # Clean up build, docker container and image
-clean: docker-down
+clean: docker-clean
   ./gradlew clean
-  docker image rm -f $PROJECT_NAME-app
