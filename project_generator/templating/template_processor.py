@@ -4,11 +4,8 @@ from jinja2 import Environment, FileSystemLoader
 import logging
 import os
 
-from pprint import pprint
 
 templates_configs = load_templates_conifg()
-
-pprint(templates_configs)
 
 file_loader = FileSystemLoader('resources/templates')
 env = Environment(loader=file_loader)
