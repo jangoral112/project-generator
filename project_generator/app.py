@@ -1,10 +1,9 @@
-from templating import create_file_from_template
+from .templating import create_file_from_template, FileName
 
 from os import getcwd, path, remove
 import subprocess
 import logging
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s | %(message)s')
 
 def run():
     logging.info("Started Project Generator")
@@ -45,15 +44,15 @@ def create_spring_project(main_projects_directory, project_name):
 # Creating files from templates
 
 def create_files_from_templates(config):
-    filenames = [
-        ".justfile",
-        ".dist.env",
-        "docker-compose.yml",
-        "Dockerfile"
+    file_names = [
+        FileName.JUSTFILE,
+        FileName.DOT_ENV,
+        FileName.DOCKER_COMPOSE,
+        FileName.DOCKERFILE
     ]
 
-    for filename in filenames:
-        create_file_from_template(config, filename)
+    for file_name in file_names:
+        create_file_from_template(config, file_name)
 
 # Clean up
 
