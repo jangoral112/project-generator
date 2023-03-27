@@ -7,8 +7,13 @@ class FileName(Enum):
     DOCKER_COMPOSE = "docker-compose.yml"
     DOCKERFILE = "Dockerfile"
 
+    @classmethod
+    def list(cls):
+        return list(map(lambda c: c.value, cls))
+
+# TODO check how to get it without setters
 @dataclass
-class Template:
-    filename: FileName
+class TemplateConfig:
+    file_name: FileName
     template_name: str
-    target_location: str
+    target_location: str # TODO rename to directory location
