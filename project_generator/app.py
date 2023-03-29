@@ -1,6 +1,6 @@
 from .templating import create_file_from_template, FileName
 
-from os import getcwd, path, remove
+from os import getcwd, path, remove, makedirs
 import subprocess
 import logging
 
@@ -13,6 +13,8 @@ def run():
     create_spring_project(config["main_projects_directory"], config["project_name"])
 
     create_files_from_templates(config)
+
+    create_additional_directory_structure(config)
 
     clean_up_unwanted_files(config)
 
@@ -44,6 +46,8 @@ def create_spring_project(main_projects_directory, project_name):
 # Creating files from templates
 
 def create_files_from_templates(config):
+    logging.info("Creating files from tempaltes")
+    
     file_names = [
         FileName.JUSTFILE,
         FileName.DOT_ENV,
@@ -53,6 +57,13 @@ def create_files_from_templates(config):
 
     for file_name in file_names:
         create_file_from_template(config, file_name)
+
+# Create missing directory structure e.g. docker/database/docker-entrypoint-initdb.d
+
+def create_additional_directory_structure(config):
+    logging.info("Creating missing directory structure")
+
+    makedirs(config["target_directory"] + "/" + "docker/database/docker-entrypoint-initdb.d", exist_ok=True)
 
 # Clean up
 
