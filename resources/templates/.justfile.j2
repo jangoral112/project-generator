@@ -20,9 +20,9 @@ docker-up: docker-build
 docker-down:
   docker compose down
 
-# Stop and remove docker containers, names volumes and images
+# Stop and remove docker containers, names volumes and local images
 docker-clean:
-  docker compose down --volumes --rmi all
+  docker compose down --volumes --rmi local
 
 # Run sh shell in docker
 docker-shell:
