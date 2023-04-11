@@ -7,6 +7,10 @@ templates:
     template_name: ".dist.env.j2"
     target_location: "./"
 
+  - file_name: "application.properties"
+    template_name: "application.properties.j2"
+    target_location: "./src/main/resources"
+
   - file_name: "docker-compose.yml" 
     template_name: "docker-compose.yml.j2"
     target_location: "./"

@@ -12,4 +12,4 @@ application_name=$(kebab_case_to_camel_case "$project_name")Application
 
 cd "$main_projects_directory"
 
-spring init --build gradle --type gradle-project --dependencies web,actuator --package-name com.jan --name "$application_name" --language java "$project_name"
+spring init --build gradle --type gradle-project --dependencies web,actuator,data-jpa,mysql,jdbc,lombok --package-name com.jan --name "$application_name" --language java "$project_name"
