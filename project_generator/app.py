@@ -26,6 +26,7 @@ def get_config():
     config = {
         "main_projects_directory": "/home/jgoral/Documents/projects",
         "project_name": "sample-project", 
+        "database_name": "sample-project-database",
         "server_port": 8989 
     }
     
@@ -52,7 +53,8 @@ def create_files_from_templates(config):
         FileName.JUSTFILE,
         FileName.DOT_ENV,
         FileName.DOCKER_COMPOSE,
-        FileName.DOCKERFILE
+        FileName.DOCKERFILE,
+        FileName.APPLICATION_PROPERTIES
     ]
 
     for file_name in file_names:

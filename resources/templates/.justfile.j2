@@ -8,6 +8,10 @@ build:
 run: build
   ./gradlew bootRun
 
+# Run database in docker
+db-up:
+  docker compose up database -d
+
 # Build docker image
 docker-build: build
   docker compose build
