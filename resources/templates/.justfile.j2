@@ -10,7 +10,7 @@ run: build
 
 # Run database in docker
 db-up:
-  docker compose up database -d
+  docker compose up database -d --wait
 
 # Build docker image
 docker-build: build
@@ -18,7 +18,7 @@ docker-build: build
 
 # Run app in docker
 docker-up: docker-build
-  docker compose up -d
+  docker compose up -d --wait
 
 # Stop and remove docker containers
 docker-down:

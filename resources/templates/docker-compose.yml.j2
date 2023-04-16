@@ -15,9 +15,9 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     healthcheck:
       test: curl --request GET 'http://127.0.0.1:${SERVER_PORT}/actuator/health'
-      interval: 2s
-      timeout: 2s
-      retries: 6
+      interval: 3s
+      timeout: 3s
+      retries: 8
       start_period: 14s
     depends_on:
       database:
