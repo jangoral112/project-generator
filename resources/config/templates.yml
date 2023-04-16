@@ -7,6 +7,10 @@ templates:
     template_name: ".dist.env.j2"
     target_location: "./"
 
+  - file_name: ".env" 
+    template_name: ".dist.env.j2"
+    target_location: "./"
+
   - file_name: "application.properties"
     template_name: "application.properties.j2"
     target_location: "./src/main/resources"

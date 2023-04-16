@@ -51,6 +51,7 @@ def create_files_from_templates(config):
     
     file_names = [
         FileName.JUSTFILE,
+        FileName.DOT_ENV_DIST,
         FileName.DOT_ENV,
         FileName.DOCKER_COMPOSE,
         FileName.DOCKERFILE,

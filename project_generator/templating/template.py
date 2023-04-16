@@ -3,7 +3,8 @@ from enum import Enum
 
 class FileName(Enum):
     JUSTFILE = ".justfile"
-    DOT_ENV = ".dist.env"
+    DOT_ENV_DIST = ".dist.env"
+    DOT_ENV = ".env"
     APPLICATION_PROPERTIES = "application.properties"
     DOCKER_COMPOSE = "docker-compose.yml"
     DOCKERFILE = "Dockerfile"
