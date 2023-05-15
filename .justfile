@@ -2,6 +2,10 @@
 run:
     python -m project_generator
 
+# Rune e2e test
+test:
+    $(pwd)/test/run.sh
+
 # TODO use different config for location
 # Clean up after run
 clean:
