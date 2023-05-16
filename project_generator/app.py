@@ -1,6 +1,6 @@
 from .templating import create_file_from_template, FileName
 
-from os import getcwd, path, remove, makedirs
+from os import getcwd, path, remove, makedirs, getenv
 import subprocess
 import logging
 
@@ -24,10 +24,10 @@ def run():
 
 def get_config():
     config = {
-        "root_directory": "/home/jgoral/Documents/projects",
-        "project_name": "sample-project", 
-        "database_name": "sample-project-database",
-        "server_port": 8989 
+        "root_directory": getenv('ROOT_DIRECTORY'),
+        "project_name": getenv('PROJECT_NAME'), 
+        "database_name": getenv('DATABASE_NAME'),
+        "server_port": getenv('SERVER_PORT')
     }
     
     config["target_directory"] = config["root_directory"] + "/" + config["project_name"]
