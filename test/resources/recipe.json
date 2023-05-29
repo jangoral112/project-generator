@@ -1,0 +1,9 @@
+{
+    "name": "sample-app-project",
+
+    "components": [
+        { "type": "java-service", "name": "fu-service" },
+        { "type": "java-service", "name": "bar-service" },
+        { "type": "mysql-database" }
+    ]
+}
