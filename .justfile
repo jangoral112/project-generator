@@ -11,5 +11,5 @@ test:
 # TODO use different config for location
 # Clean up after run
 clean:
-    just -f /home/jgoral/Documents/projects/$PROJECT_NAME/.justfile clean || true
-    rm -rf /home/jgoral/Documents/projects/$PROJECT_NAME
+    just -f $ROOT_DIRECTORY/$PROJECT_NAME/.justfile clean || true
+    rm -rf $ROOT_DIRECTORY/$PROJECT_NAME

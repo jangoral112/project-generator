@@ -24,6 +24,16 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Find path for app and copy .test.env
+      run: |
+          pwd
+          cp .github/workflows/.test.env .env
+
+          ls -la
+
+          echo ------
+          cat .env
+
     - name: Install Prebuilt MPR and just spring cli
       run: |
         wget -qO - 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
@@ -32,19 +42,25 @@ jobs:
 
         sudo apt install just
 
-    - name: Install jdk 18 and spring cli
+    - name: Install jdk 17 and spring cli
       run: |
-        sudo apt install -y unzip openjdk-18-jdk
-        sudo update-java-alternatives -s java-1.18.0-openjdk-amd64
+        sudo apt install -y unzip openjdk-17-jdk
+        sudo update-java-alternatives -s java-1.17.0-openjdk-amd64
         
-        export JAVA_HOME=/usr/lib/jvm/java-18-openjdk-amd64/
-        export PATH=$PATH:$JAVA_HOME
 
         wget https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-cli/3.0.6/spring-boot-cli-3.0.6-bin.zip 
         unzip spring-boot-cli-3.0.6-bin.zip
 
-        export SPRING_HOME=$(pwd)/spring-3.0.6
-        export PATH=$SPRING_HOME/bin:$PATH
+    - name: Install assert.sh
+      run: |
+        mkdir lib
+
+        cd lib
+
+        git clone https://github.com/torokmark/assert.sh.git
+
+        cd assert.sh 
+        rm -rf .git
 
     - name: Install python dependencies
       run: |
@@ -53,4 +69,10 @@ jobs:
 
     - name: Test app
       run: |
+        export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+        export PATH=$PATH:$JAVA_HOME
+
+        export SPRING_HOME=$(pwd)/spring-3.0.6
+        export PATH=$SPRING_HOME/bin:$PATH
+
         just test

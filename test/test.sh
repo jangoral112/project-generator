@@ -4,7 +4,7 @@ source ./lib/assert.sh/assert.sh
 
 just run
 
-(cd /home/jgoral/Documents/projects/sample-project/; just docker-up)
+(cd $ROOT_DIRECTORY/$PROJECT_NAME; just docker-up)
 
 echo "TEST: should launch healthy application when just docker-up command is run"
 

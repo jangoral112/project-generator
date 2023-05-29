@@ -6,4 +6,6 @@ COPY . .
 
 RUN apk add curl
 
+RUN ./gradlew resolveMainClassName
+
 CMD ./gradlew bootRun
