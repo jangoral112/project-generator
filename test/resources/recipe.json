@@ -1,5 +1,8 @@
 {
-    "name": "sample-app-project",
+    "project_name": "sample-project",
+    "root_directory": "/home/jgoral/Documents/projects",
+    "database_name": "sample-project-database",
+    "server_port": "8989",
 
     "components": [
         { "type": "java-service", "name": "fu-service" },
